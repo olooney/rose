@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Petals Around the Rose: Approach Summary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
+<body>
+  <main class="container py-4">
+    <h1 class="mb-4">Petals Around the Rose: Approach Summary</h1>
+
+    <section class="mb-5">
+      <h2>Summary</h2>
+      <div class="table-responsive text-end">
+        <table class="dataframe table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Approach</th>
+      <th>Min N for 100% Accuracy</th>
+      <th>Accuracy at N=20</th>
+      <th>RMSE at N=20</th>
+      <th>Max Accuracy Achieved</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Naïve Linear Regression</td>
+      <td>-</td>
+      <td>9.64%</td>
+      <td>4.05</td>
+      <td>14.86%</td>
+    </tr>
+    <tr>
+      <td>LR With Categorical Features</td>
+      <td>30</td>
+      <td>40.62%</td>
+      <td>0.92</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>Bincount Pivot</td>
+      <td>6</td>
+      <td>100.00%</td>
+      <td>0.00</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>GAM</td>
+      <td>100</td>
+      <td>15.55%</td>
+      <td>3.35</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>GB Tree</td>
+      <td>200</td>
+      <td>9.43%</td>
+      <td>4.08</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <td>Neural Network</td>
+      <td>-</td>
+      <td>9.88%</td>
+      <td>4.31</td>
+      <td>90.44%</td>
+    </tr>
+    <tr>
+      <td>DeepSet</td>
+      <td>5</td>
+      <td>100.00%</td>
+      <td>0.16</td>
+      <td>100.00%</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+    </section>
+
+    
+    <section class="mb-5">
+      <h2>Naïve Linear Regression</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">-</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">9.64%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">4.05</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">14.86%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="lr/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="lr/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>LR With Categorical Features</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">30</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">40.62%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">0.92</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="lr_categorical_features/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="lr_categorical_features/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>Bincount Pivot</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">6</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">0.00</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="lr_bincount/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="lr_bincount/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>GAM</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">100</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">15.55%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">3.35</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="gam/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="gam/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>GB Tree</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">200</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">9.43%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">4.08</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="gb_tree/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="gb_tree/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>Neural Network</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">-</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">9.88%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">4.31</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">90.44%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="fcnn/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="fcnn/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+    <section class="mb-5">
+      <h2>DeepSet</h2>
+
+      <div class="row mb-3">
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Min N for 100% Accuracy</div>
+              <div class="fs-5">5</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Accuracy at N=20</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">RMSE at N=20</div>
+              <div class="fs-5">0.16</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-6 col-md-3">
+          <div class="card mb-2">
+            <div class="card-body py-2">
+              <div class="text-muted small">Max Accuracy Achieved</div>
+              <div class="fs-5">100.00%</div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6">
+          <img src="deepset/learning.png" class="img-fluid border rounded" alt="Learning curve">
+        </div>
+        <div class="col-12 col-lg-6 d-flex justify-content-end">
+          <img src="deepset/scatter.png" class="img-fluid border rounded" alt="Actual vs. predicted">
+        </div>
+      </div>
+    </section>
+    
+  </main>
+</body>
+</html>

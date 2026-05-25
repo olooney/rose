@@ -1,0 +1,8 @@
+approach,min_N_for_100pct_accuracy,accuracy_at_N_20,rmse_at_N_20,max_accuracy_achieved
+Naïve Linear Regression,,0.0964,4.0510892329305666,0.1486
+LR With Categorical Features,30.0,0.4062,0.9199713783678627,1.0
+Bincount Pivot,6.0,1.0,3.706761506992276e-15,1.0
+GAM,100.0,0.1555,3.3454917832748987,1.0
+GB Tree,200.0,0.0943,4.0821126726879315,1.0
+Neural Network,,0.0988,4.306416478830122,0.9044
+DeepSet,5.0,1.0,0.159234611375822,1.0
