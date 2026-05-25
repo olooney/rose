@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Protocol, Annotated
+from typing import Protocol, Annotated, TypeAlias
 
 import numpy as np
 import numpy.typing as npt
@@ -117,7 +117,7 @@ class LinearCategoricalFeatures(Approach):
             ]
         )
         model.fit(X, y)
-        return model
+        return model  # type: ignore[return-value]
 
 
 class BincountModel:
@@ -157,7 +157,7 @@ class GAM(Approach):
     title: str = "GAM"
 
     def train(self, X: XRose, y: yRose) -> RoseModel:
-        model = LinearGAM(s(0) + s(1) + s(2) + s(3) + s(4))
+        model = LinearGAM(s(0) + s(1) + s(2) + s(3) + s(4))  # type: ignore[arg-type]
         model.fit(X, y)
         return model
 
@@ -402,7 +402,7 @@ def summarize_results(results: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def format_summary(summary: pd.DataFrame) -> None:
+def format_summary(summary: pd.DataFrame) -> pd.DataFrame:
     formatted = summary.rename(columns={
         "approach": "Approach",
         "min_N_for_100pct_accuracy": "N Needed to Solve",
