@@ -1,0 +1,23 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\oloon\\miniconda3\\envs\\py312\\python.exe",
+  "python.terminal.activateEnvironment": false,
+  "terminal.integrated.defaultProfile.windows": "Miniconda Prompt (py312)",
+  "terminal.integrated.automationProfile.windows": {
+    "path": "C:\\Windows\\System32\\cmd.exe",
+    "args": [
+      "/K",
+      "C:\\Users\\oloon\\miniconda3\\Scripts\\activate.bat C:\\Users\\oloon\\miniconda3 && conda activate py312"
+    ]
+  },
+  "terminal.integrated.profiles.windows": {
+    "Miniconda Prompt (py312)": {
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "args": [
+        "/K",
+        "C:\\Users\\oloon\\miniconda3\\Scripts\\activate.bat C:\\Users\\oloon\\miniconda3 && conda activate py312"
+      ]
+    }
+  },
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda"
+}

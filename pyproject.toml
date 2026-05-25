@@ -11,4 +11,9 @@ requires-python = ">=3.12"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-py-modules = ["rose"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rose = ["templates/*.html"]
