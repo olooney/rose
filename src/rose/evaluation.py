@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
-import shutil
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -60,16 +60,18 @@ def evaluate_approach(
         train_metrics = evaluate_predictions(y_train, y_hat_train)
         test_metrics = evaluate_predictions(y_test, y_hat_test)
 
-        rows.append({
-            "approach": approach.title,
-            "N": N,
-            "train_rmse": train_metrics["rmse"],
-            "train_mae": train_metrics["mae"],
-            "train_accuracy": train_metrics["accuracy"],
-            "test_rmse": test_metrics["rmse"],
-            "test_mae": test_metrics["mae"],
-            "test_accuracy": test_metrics["accuracy"],
-        })
+        rows.append(
+            {
+                "approach": approach.title,
+                "N": N,
+                "train_rmse": train_metrics["rmse"],
+                "train_mae": train_metrics["mae"],
+                "train_accuracy": train_metrics["accuracy"],
+                "test_rmse": test_metrics["rmse"],
+                "test_mae": test_metrics["mae"],
+                "test_accuracy": test_metrics["accuracy"],
+            }
+        )
 
         if verbose >= 1:
             print(".", end="")
@@ -97,25 +99,29 @@ def summarize_results(results: pd.DataFrame) -> pd.DataFrame:
         at_20 = group[group["N"] >= 20]
         row_20 = group.iloc[-1] if at_20.empty else at_20.iloc[0]
 
-        rows.append({
-            "approach": approach,
-            "min_N_for_100pct_accuracy": min_N_perfect,
-            "accuracy_at_N_20": float(row_20["test_accuracy"]),
-            "rmse_at_N_20": float(row_20["test_rmse"]),
-            "max_accuracy_achieved": float(group["test_accuracy"].max()),
-        })
+        rows.append(
+            {
+                "approach": approach,
+                "min_N_for_100pct_accuracy": min_N_perfect,
+                "accuracy_at_N_20": float(row_20["test_accuracy"]),
+                "rmse_at_N_20": float(row_20["test_rmse"]),
+                "max_accuracy_achieved": float(group["test_accuracy"].max()),
+            }
+        )
 
     return pd.DataFrame(rows)
 
 
 def format_summary(summary: pd.DataFrame) -> pd.DataFrame:
-    formatted = summary.rename(columns={
-        "approach": "Approach",
-        "min_N_for_100pct_accuracy": "N Needed to Solve",
-        "accuracy_at_N_20": "Accuracy at N=20",
-        "rmse_at_N_20": "RMSE at N=20",
-        "max_accuracy_achieved": "Max Accuracy",
-    }).copy()
+    formatted = summary.rename(
+        columns={
+            "approach": "Approach",
+            "min_N_for_100pct_accuracy": "N Needed to Solve",
+            "accuracy_at_N_20": "Accuracy at N=20",
+            "rmse_at_N_20": "RMSE at N=20",
+            "max_accuracy_achieved": "Max Accuracy",
+        }
+    ).copy()
 
     formatted["N Needed to Solve"] = formatted["N Needed to Solve"].map(_format_int)
     formatted["Accuracy at N=20"] = formatted["Accuracy at N=20"].map(_format_percent)
@@ -190,9 +196,13 @@ def build_approach_report(
             "Max Accuracy Achieved": _format_percent(row["max_accuracy_achieved"]),
         }
 
-    html = _template_environment().get_template("summary.html").render(
-        summary_table=_format_summary_table(summary),
-        approaches=approach_contexts,
+    html = (
+        _template_environment()
+        .get_template("summary.html")
+        .render(
+            summary_table=_format_summary_table(summary),
+            approaches=approach_contexts,
+        )
     )
     (output_path / "summary.html").write_text(html, encoding="utf-8")
 

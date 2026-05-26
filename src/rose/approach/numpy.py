@@ -13,10 +13,7 @@ class BincountModel:
 
     @staticmethod
     def bincount(X: XRose) -> npt.NDArray[np.int_]:
-        return np.array([
-            np.bincount(row, minlength=7)[1:7]
-            for row in X
-        ])
+        return np.array([np.bincount(row, minlength=7)[1:7] for row in X])
 
     def train(self, X: XRose, y: yRose) -> None:
         C = self.bincount(X)

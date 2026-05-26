@@ -13,5 +13,4 @@ yRose = npt.NDArray[np.float64]
 
 
 class RoseModel(Protocol):
-    def predict(self, X: XRose) -> yRose:
-        ...
+    def predict(self, X: XRose) -> yRose: ...

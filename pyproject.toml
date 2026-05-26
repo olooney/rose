@@ -22,6 +22,14 @@ dependencies = [
     "nbformat>=4.2.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-cov>=7.0.0",
+    "ruff",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
@@ -30,3 +38,30 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 rose = ["templates/*.html"]
+
+
+[tool.ruff]
+target-version = "py314"
+fix = true
+src = ["src", "tests"]
+
+
+[tool.ruff.lint]
+select = [
+    "E",   # PEP 8
+    "F",   # Pyflakes
+    "I",   # import sort
+    "B",   # bugbear
+    "UP",  # PyUpgrade
+    "TRY", # Tryceratopsimport math
+]
+ignore = [
+    "E501",   # line length
+    "TRY003", # long exception messages
+    "TRY300", # return outside of else
+    "B905",   # explicit strict in zip()
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov=src/jellyjoin --cov-report=term-missing"
+testpaths = ["tests"]

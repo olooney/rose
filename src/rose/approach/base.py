@@ -10,5 +10,4 @@ class Approach(ABC):
     title: str
 
     @abstractmethod
-    def train(self, X: XRose, y: yRose) -> RoseModel:
-        ...
+    def train(self, X: XRose, y: yRose) -> RoseModel: ...

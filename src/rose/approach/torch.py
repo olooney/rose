@@ -91,7 +91,9 @@ class NeuralNetwork(Approach):
 
 
 class DeepSetNN(nn.Module):
-    def __init__(self, input_dim: int, phi_hidden_dim: int, phi_dim: int, rho_dim: int) -> None:
+    def __init__(
+        self, input_dim: int, phi_hidden_dim: int, phi_dim: int, rho_dim: int
+    ) -> None:
         super().__init__()
         self.phi = nn.Sequential(
             nn.Linear(input_dim, phi_hidden_dim),
@@ -123,7 +125,9 @@ class DeepSet(Approach):
         X_tensor = torch.tensor(X_onehot, dtype=torch.float32).to(device)
         y_tensor = torch.tensor(y, dtype=torch.float32).unsqueeze(1).to(device)
 
-        model = DeepSetNN(input_dim=6, phi_hidden_dim=8, phi_dim=1, rho_dim=8).to(device)
+        model = DeepSetNN(input_dim=6, phi_hidden_dim=8, phi_dim=1, rho_dim=8).to(
+            device
+        )
 
         criterion = nn.MSELoss()
         optimizer = optim.Adam(model.parameters(), lr=0.001)
