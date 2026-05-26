@@ -1,13 +1,24 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=80.9.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "rose"
 version = "0.1.0"
 description = "Petals Around the Rose with ML"
+authors = [{ name = "Oran Looney", email = "olooney@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
 
 dependencies = [
     "numpy~=2.4.0",

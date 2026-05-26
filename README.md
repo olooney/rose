@@ -73,6 +73,6 @@ rose/
 |-- notebooks/                   # visualizations and ad hoc models
 |-- src/
 |   `-- rose/                    # main source code
-|-- templates/                   # Jinja2 templates for reports
+|       `-- templates/           # Jinja2 templates for reports (package-data)
 `-- tests/                       # unit tests
 ```
