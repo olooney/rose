@@ -3,11 +3,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-os.environ.setdefault("MPLBACKEND", "Agg")
-
 import matplotlib
-
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -27,6 +23,10 @@ from rose.viz import (
     plot_response_surface,
     plot_response_surface_matplotlib,
 )
+
+# headless matplotlib rendering
+os.environ.setdefault("MPLBACKEND", "Agg")
+matplotlib.use("Agg")
 
 
 @pytest.fixture(autouse=True)
@@ -99,14 +99,14 @@ def test_small_approaches_train_and_predict(approach_cls) -> None:
     assert np.isfinite(predictions).all()
 
 
-def test_other_approaches_import_only() -> None:
+def test_other_approach_imports() -> None:
     assert GAM is not None
     assert GBTree is not None
     assert NeuralNetwork is not None
     assert DeepSet is not None
 
 
-def test_plotly_entry_points_import_only() -> None:
+def test_plotly_entry_points_import() -> None:
     assert plot_response_surface is not None
     assert plot_hyperparameter_trials_3d is not None
 

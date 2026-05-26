@@ -16,3 +16,11 @@ repos:
 
       # Format code (Black-compatible)
       - id: ruff-format
+  - repo: local
+    hooks:
+      - id: pytest-smoke
+        name: pytest smoke tests
+        entry: .venv/Scripts/python.exe -m pytest tests/test_smoke.py
+        language: system
+        pass_filenames: false
+        always_run: true

@@ -12,6 +12,7 @@ requires-python = ">=3.12"
 dependencies = [
     "numpy~=2.4.0",
     "pandas~=3.0.0",
+    "pyarrow~=22.0.0",
     "scikit-learn~=1.8.0",
     "torch~=2.12.0",
     "pygam~=0.12.0",
@@ -63,5 +64,5 @@ ignore = [
 ]
 
 [tool.pytest.ini_options]
-addopts = "--cov=src/jellyjoin --cov-report=term-missing"
+addopts = "--cov=src/rose --cov-report=term-missing"
 testpaths = ["tests"]
