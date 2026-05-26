@@ -9,7 +9,7 @@ XRose: TypeAlias = Annotated[
     npt.NDArray[np.int_],
     "shape=(N, 5)",
 ]
-yRose = npt.NDArray[np.float_]
+yRose = npt.NDArray[np.float64]
 
 
 class RoseModel(Protocol):

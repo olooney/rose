@@ -9,6 +9,19 @@ description = "Petals Around the Rose with ML"
 readme = "README.md"
 requires-python = ">=3.12"
 
+dependencies = [
+    "numpy~=2.4.0",
+    "pandas~=3.0.0",
+    "scikit-learn~=1.8.0",
+    "torch~=2.12.0",
+    "pygam~=0.12.0",
+    "matplotlib~=3.10.0",
+    "optuna~=4.8.0",
+    "plotly~=6.7.0",
+    "ipywidgets~=8.1.0",
+    "nbformat>=4.2.0",
+]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
