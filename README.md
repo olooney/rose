@@ -56,7 +56,7 @@ A variety of other approaches, some with specialized visualizations:
 - [linear_counts.ipynb](notebooks/linear_counts.ipynb): Reframes rolls as face-count vectors and solves for the scoring coefficients with least squares.
 - [linear_odd_feature.ipynb](notebooks/linear_odd_feature.ipynb): Tests simple hand-built oddness-based feature engineering for linear models.
 - [tree.ipynb](notebooks/tree.ipynb): Experiments with a histogram gradient-boosted tree regressor on the petals prediction task.
-- [other_approaches.ipynb](notebooks/around_the_rose.ipynb): NN variants, GAM, symbolic regression
+- [other_approaches.ipynb](notebooks/other_approaches.ipynb): NN variants, GAM, symbolic regression
 
 Just a helper notebook to check on GPU availablity for PyTorch.
 
