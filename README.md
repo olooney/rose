@@ -30,6 +30,22 @@ Run the test suite with:
 pytest
 ```
 
+## Notebooks
+
+- [around_the_rose.ipynb](notebooks/around_the_rose.ipynb): Builds a simple neural-network baseline on synthetic Petals Around the Rose data.
+- [concept_learning.ipynb](notebooks/concept_learning.ipynb): Enumerates a finite hypothesis space and filters rules consistent with observed examples.
+- [deepset.ipynb](notebooks/deepset.ipynb): Prototypes a DeepSet architecture on one-hot dice inputs to study permutation-invariant learning.
+- [deepset_animation.ipynb](notebooks/deepset_animation.ipynb): Trains a DeepSet-style model and generates animation frames for how its learned surface evolves.
+- [eda.ipynb](notebooks/eda.ipynb): Explores how individual die values and small dice combinations relate to the target score.
+- [exact_methods.ipynb](notebooks/exact_methods.ipynb): Solves the rule with exact and near-exact approaches including linear algebra and constraint solvers.
+- [gpu_device_check.ipynb](notebooks/gpu_device_check.ipynb): Checks PyTorch device availability and reports basic GPU or CPU execution details.
+- [linear_counts.ipynb](notebooks/linear_counts.ipynb): Reframes rolls as face-count vectors and solves for the scoring coefficients with least squares.
+- [linear_odd_feature.ipynb](notebooks/linear_odd_feature.ipynb): Tests simple hand-built oddness-based feature engineering for linear models.
+- [optuna_nn.ipynb](notebooks/optuna_nn.ipynb): Tunes a feed-forward neural network with Optuna and visualizes hyperparameter effects.
+- [optuna_tree.ipynb](notebooks/optuna_tree.ipynb): Tunes a gradient-boosted tree with Optuna and inspects trial behavior and response surfaces.
+- [summarize_approaches.ipynb](notebooks/summarize_approaches.ipynb): Runs the report builder across all registered approaches and shows the summary table.
+- [tree.ipynb](notebooks/tree.ipynb): Experiments with a histogram gradient-boosted tree regressor on the petals prediction task.
+
 ## Structure
 
 ```text
