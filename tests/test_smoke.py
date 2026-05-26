@@ -133,7 +133,9 @@ def test_matplotlib_visualizations_save_output(
     )
     _save_current_figure(tmp_path / "prediction_scatter.png")
 
-    predictor = lambda values: values[:, 0] + values[:, 1]
+    def predictor(values: np.ndarray) -> np.ndarray:
+        return values[:, 0] + values[:, 1]
+
     plot_response_surface_matplotlib(
         predictor,
         feature_count=5,

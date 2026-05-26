@@ -1,15 +1,16 @@
 from __future__ import annotations
 
-from typing import Annotated, Protocol, TypeAlias
+from typing import Annotated, Protocol
 
 import numpy as np
 import numpy.typing as npt
 
-XRose: TypeAlias = Annotated[
+type XRose = Annotated[
     npt.NDArray[np.int_],
     "shape=(N, 5)",
 ]
-yRose = npt.NDArray[np.float64]
+
+type yRose = npt.NDArray[np.float64]
 
 
 class RoseModel(Protocol):

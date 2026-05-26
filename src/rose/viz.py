@@ -246,8 +246,6 @@ def plot_scatter(
     model = approach.train(X_train, y_train)
     y_hat = model.predict(X_test).astype(float)
 
-    y_round = np.rint(y_hat)
-
     plot_prediction_scatter(
         y_test,
         y_hat,
