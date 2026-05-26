@@ -6,13 +6,14 @@ from pathlib import Path
 os.environ.setdefault("MPLBACKEND", "Agg")
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pytest
 
-from rose.approach import Bincount, DeepSet, GAM, GBTree, Linear, NeuralNetwork
+from rose.approach import GAM, Bincount, DeepSet, GBTree, Linear, NeuralNetwork
 from rose.data import sample_sizes, training_data
 from rose.evaluation import build_approach_report
 from rose.optimize import (
@@ -50,7 +51,27 @@ def test_sample_sizes_and_training_data_are_deterministic() -> None:
     assert sample_sizes(0) == []
     assert sample_sizes(9) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
     assert sample_sizes(25) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20]
-    assert sample_sizes(105) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    assert sample_sizes(105) == [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        20,
+        30,
+        40,
+        50,
+        60,
+        70,
+        80,
+        90,
+        100,
+    ]
 
     X_1, y_1 = training_data(8, seed=123)
     X_2, y_2 = training_data(8, seed=123)
@@ -90,7 +111,9 @@ def test_plotly_entry_points_import_only() -> None:
     assert plot_hyperparameter_trials_3d is not None
 
 
-def test_matplotlib_visualizations_save_output(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_matplotlib_visualizations_save_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     monkeypatch.setattr(plt, "show", _headless_show)
 
     learning_results = pd.DataFrame(
@@ -122,7 +145,9 @@ def test_matplotlib_visualizations_save_output(tmp_path: Path, monkeypatch: pyte
     _save_current_figure(tmp_path / "surface.png")
 
 
-def test_optimize_matplotlib_visualizations_save_output(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_optimize_matplotlib_visualizations_save_output(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     monkeypatch.setattr(plt, "show", _headless_show)
 
     trials = pd.DataFrame(
@@ -140,7 +165,9 @@ def test_optimize_matplotlib_visualizations_save_output(tmp_path: Path, monkeypa
     _save_current_figure(tmp_path / "categorical.png")
 
 
-def test_build_approach_report_for_small_approaches(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def test_build_approach_report_for_small_approaches(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     monkeypatch.setattr(plt, "show", _headless_show)
 
     summary = build_approach_report(
