@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
+import rose
 from rose.approach import GAM, Bincount, DeepSet, GBTree, Linear, NeuralNetwork
 from rose.data import sample_sizes, training_data
 from rose.evaluation import build_approach_report
@@ -104,6 +105,12 @@ def test_other_approach_imports() -> None:
     assert GBTree is not None
     assert NeuralNetwork is not None
     assert DeepSet is not None
+
+
+def test_package_version_matches_pyproject() -> None:
+    assert isinstance(rose.__version__, str)
+    assert len(rose.__version__) > 0
+    assert rose.__version__.count(".") == 2
 
 
 def test_plotly_entry_points_import() -> None:

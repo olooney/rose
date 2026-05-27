@@ -111,7 +111,7 @@ def plot_categorical_hyperparameter(
     plt.ylabel(target)
     plt.boxplot(
         values,
-        labels=categories,
+        tick_labels=categories,
         widths=counts / counts.max(),
         showmeans=False,
     )
