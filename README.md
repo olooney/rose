@@ -8,6 +8,8 @@ The core implementation lives in `src/rose/`. It generates synthetic training da
 
 Most of the exploration happens in the notebooks under `notebooks/`. These cover concept learning, exact methods, linear feature ideas, tree and neural network experiments, hyperparameter tuning, and a DeepSet animation. Generated comparison tables and plots are saved under `docs/approaches/`, with the HTML summary template in `templates/summary.html`.
 
+View the formatted approaches report: [docs/approaches/summary.html](https://htmlpreview.github.io/?https://github.com/olooney/rose-petals/blob/main/docs/approaches/summary.html)
+
 ## Setup
 
 Install the project in editable mode with development dependencies:
