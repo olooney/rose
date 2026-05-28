@@ -222,7 +222,7 @@ def _capture_plot(plot_function, path: Path, *args, **kwargs) -> None:
 
     try:
         plt.close("all")
-        plt.show = lambda *a, **k: None
+        plt.show = lambda *a, **k: None  # type: ignore[invalid-assignment]  # ty: ignore[invalid-assignment]
 
         plot_function(*args, **kwargs)
 
@@ -242,15 +242,15 @@ def _template_environment() -> Environment:
 
 
 def _format_percent(x: object) -> str:
-    return "-" if pd.isna(x) else f"{100 * float(x):.2f}%"
+    return "-" if pd.isna(x) else f"{100 * float(x):.2f}%"  # type: ignore[invalid-argument-type]  # ty: ignore[invalid-argument-type]
 
 
 def _format_number(x: object) -> str:
-    return "-" if pd.isna(x) else f"{float(x):.2f}"
+    return "-" if pd.isna(x) else f"{float(x):.2f}"  # type: ignore[invalid-argument-type]  # ty: ignore[invalid-argument-type]
 
 
 def _format_int(x: object) -> str:
-    return "-" if pd.isna(x) else f"{int(x)}"
+    return "-" if pd.isna(x) else f"{int(x)}"  # type: ignore[invalid-argument-type]  # ty: ignore[invalid-argument-type]
 
 
 def _format_summary_table(summary: pd.DataFrame) -> str:
