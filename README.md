@@ -1,3 +1,5 @@
+![Petals Around the Rose dice and roses](docs/images/lead.jpg)
+
 # Machine Learning Approaches to Petals Around the Rose
 
 This is a collection of experiments for automated algorithms that can solve the `Petals Around the Rose` game and correctly deduce
@@ -7,8 +9,6 @@ methods, so any particular method might be intentionally sub-optimal.
 The core implementation lives in `src/rose/`. It generates synthetic training data, trains several approaches, and evaluates how quickly each model learns the scoring rule. The approaches in this repo include linear baselines, a bincount feature model, a GAM, a gradient-boosted tree, a fully connected neural network, and a DeepSet model.
 
 Most of the exploration happens in the notebooks under `notebooks/`. These cover concept learning, exact methods, linear feature ideas, tree and neural network experiments, hyperparameter tuning, and a DeepSet animation. Generated comparison tables and plots are saved under `docs/approaches/`, with the HTML summary template in `templates/summary.html`.
-
-View the formatted approaches report: [docs/approaches/summary.html](https://htmlpreview.github.io/?https://github.com/olooney/rose-petals/blob/main/docs/approaches/summary.html)
 
 ## Setup
 
@@ -40,9 +40,10 @@ A brief exploratory data analysis to DQA and visualize the synthetic data:
 
 - [eda.ipynb](notebooks/eda.ipynb): Explores how individual die values and small dice combinations relate to the target score.
 
-The main entry point to formally loop over all approaches and produce a formatted report:
+The main entry point to formally loop over all approaches and produce a formatted report with visualizations and metrics:
 
 - [summarize_approaches.ipynb](notebooks/summarize_approaches.ipynb)
+- [sample summary report](https://htmlpreview.github.io/?https://github.com/olooney/rose-petals/blob/main/docs/approaches/summary.html)
 
 Two of the models require hyperparameter optimization to provide confidence the models are well-suited to these data:
 
