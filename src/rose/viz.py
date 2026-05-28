@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 from sklearn.metrics import root_mean_squared_error
 
 from .approach.base import Approach
@@ -27,6 +30,7 @@ def plot_learning(
 
     plt.xscale("log")
     plt.xlim(1, max_train_N)
+    plt.xticks([1, 10, 100, 1000], ["1", "10", "100", "1,000"])
 
     plt.xlabel("$N$ Training Examples")
     plt.ylabel("Test Accuracy")
@@ -34,6 +38,97 @@ def plot_learning(
 
     plt.ylim(-0.02, 1.02)
     plt.grid(True, which="both", alpha=0.3)
+
+    plt.show()
+
+
+def plot_summary_learning(
+    results: pd.DataFrame | str | Path,
+    max_train_N: int | None = None,
+) -> None:
+    if isinstance(results, pd.DataFrame):
+        results_df = results.copy()
+    else:
+        results_df = pd.read_parquet(Path(results))
+
+    if results_df.empty:
+        raise ValueError("results must contain at least one row")
+
+    if max_train_N is None:
+        max_train_N = int(results_df["N"].max())
+
+    dashed_approaches = {
+        "Naïve Linear Regression",
+        "LR With Categorical Features",
+        "GAM",
+    }
+    approach_colors = {
+        "Naïve Linear Regression": "#8A8F98",
+        "LR With Categorical Features": "#D18F1D",
+        "Bincount Pivot": "#2D9D78",
+        "GAM": "#D04F4F",
+        "GB Tree": "#6E5AE6",
+        "Neural Network": "#2A9DBB",
+        "DeepSet": "#C65AA0",
+    }
+    legend_entries: list[tuple[int, str, Line2D]] = []
+
+    plt.figure(figsize=(8.92, 8.92 * 7 / 11))
+
+    for approach, group in results_df.groupby("approach", sort=False):
+        group = group.sort_values("N")
+
+        max_accuracy = float(group["test_accuracy"].max())
+        first_max_row = group[group["test_accuracy"] == max_accuracy].iloc[0]
+        natural_min_max_n = int(first_max_row["N"])
+        min_max_n = natural_min_max_n
+        legend_label = f"{approach} ($N={min_max_n}$)"
+        sort_n = min_max_n
+        if str(approach) == "Naïve Linear Regression":
+            min_max_n = max_train_N
+            first_max_row = group[group["N"] == min_max_n].iloc[0]
+            legend_label = str(approach)
+            sort_n = natural_min_max_n
+        plotted_group = group[group["N"] <= min_max_n]
+
+        (line,) = plt.plot(
+            plotted_group["N"],
+            plotted_group["test_accuracy"],
+            linewidth=1.3,
+            alpha=0.75,
+            color=approach_colors.get(str(approach)),
+            linestyle="--" if str(approach) in dashed_approaches else "-",
+            label=legend_label,
+        )
+        legend_entries.append((sort_n, str(approach), line))
+        plt.scatter(
+            first_max_row["N"],
+            first_max_row["test_accuracy"],
+            color=line.get_color(),
+            s=28,
+            alpha=0.9,
+            zorder=3,
+        )
+
+    plt.xscale("log")
+    plt.xlim(1, max_train_N)
+
+    plt.xlabel("$N$ Training Examples")
+    plt.ylabel("Test Accuracy")
+    plt.title("Approach Comparison: Accuracy vs. Training Set Size")
+
+    plt.ylim(-0.02, 1.02)
+    plt.grid(True, which="both", alpha=0.3)
+    legend_entries.sort(key=lambda entry: (entry[0], entry[1]))
+    plt.legend(
+        handles=[line for _, _, line in legend_entries],
+        labels=[line.get_label() for _, _, line in legend_entries],
+        loc="upper center",
+        bbox_to_anchor=(0.5, -0.14),
+        ncol=3,
+        frameon=False,
+    )
+    plt.tight_layout(rect=(0, 0.05, 1, 1))
 
     plt.show()
 
