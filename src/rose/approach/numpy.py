@@ -17,7 +17,8 @@ class BincountModel:
 
     def train(self, X: XRose, y: yRose) -> None:
         C = self.bincount(X)
-        self.coefficients, *_ = np.linalg.lstsq(C, y, rcond=None)
+        coefficients, *_ = np.linalg.lstsq(C, y, rcond=None)
+        self.coefficients = np.asarray(coefficients, dtype=np.float64)
 
     def predict(self, X: XRose) -> yRose:
         if self.coefficients is None:
